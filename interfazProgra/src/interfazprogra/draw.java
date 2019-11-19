@@ -47,9 +47,16 @@ public class draw extends JPanel{
     
     }
     private void drawTree(Graphics g, int x1, int y1, double angle, int depth) {
-        if (depth == 0) return;
-        int x2 = x1 + (int) (Math.cos(Math.toRadians(angle)) * depth * 1.5);
-        int y2 = y1 + (int) (Math.sin(Math.toRadians(angle)) * depth * 1.5);
+        g.setColor(Color.BLACK);
+        if (depth == 0){
+            g.setColor(new Color(0,153,0));
+            g.fillArc(x1, y1, 4, 4, (int)angle, (int)(Math.PI/2));
+            return;        
+        }
+
+        int x2 = x1 + (int) (Math.cos(Math.toRadians(angle)) * depth * 8);
+        int y2 = y1 + (int) (Math.sin(Math.toRadians(angle)) * depth * 8);
+        
         g.drawLine(x1, y1, x2, y2);
         drawTree(g, x2, y2, angle - 20, depth - 1);
         drawTree(g, x2, y2, angle + 20, depth - 1);
