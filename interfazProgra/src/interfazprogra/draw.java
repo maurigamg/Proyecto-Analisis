@@ -20,9 +20,9 @@ import javax.swing.JPanel;
  * @author erick
  */
 public class draw extends JPanel{
-    static tree treeToTest=new tree(400,500,-90);
-    public draw(){
-        
+    public tree treeToTest;//=new tree(400,500,-90);
+    public draw(tree arbol){
+        treeToTest = arbol;
     }
 
     @Override
@@ -44,12 +44,18 @@ public class draw extends JPanel{
         g2d.setColor(Color.ORANGE);
         g2d.fillRect(0, 0, 1199, 700);
         g2d.setColor(Color.BLACK);
-        drawTree(g2d, 400, 750, -90, 10);
+        drawTree(g2d, 400, 750, -90, 8,treeToTest.root);
     
   
     
     }
-    private void drawTree(Graphics g, int x1, int y1, double angle, int depth) {
+    
+//    private void drawAux(Graphics g, int x1, int y1, double angle, int depth, Node rootNode){
+//        drawTree(g, x1, y1, angle, depth,rootNode);
+//        return;
+//    }
+    
+    private void drawTree(Graphics g, int x1, int y1, double angle, int depth, Node rootNode) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.BLACK);
         
@@ -57,8 +63,9 @@ public class draw extends JPanel{
             g2d.setColor(new Color(0,153,0));            
             Shape ellipse=new Ellipse2D.Double(x1,y1,5,5);
             g2d.fill(ellipse);
-            tree.insert(treeToTest.test,x1,y1,angle,ellipse);
-           
+             rootNode.ellipse = ellipse;
+            //tree.insert(treeToTest.test,x1,y1,angle,ellipse);
+            
             return;        
         }
 
@@ -67,10 +74,11 @@ public class draw extends JPanel{
        
         
         g2d.drawLine(x1, y1, x2, y2);
-        tree.insert(treeToTest.test,x1,y1,angle,null);
-        drawTree(g, x2, y2, angle - 20, depth - 1);
-        
-        drawTree(g, x2, y2, angle + 20, depth - 1);
+        //tree.insert(treeToTest.test,x1,y1,angle,null);
+        rootNode.left = new Node(x2, y2, angle-20);
+        drawTree(g, x2, y2, angle - 20, depth - 1,rootNode.left);
+        rootNode.right = new Node(x2, y2, angle+20);
+        drawTree(g, x2, y2, angle + 20, depth - 1,rootNode.right);
     }
     
     

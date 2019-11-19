@@ -13,54 +13,54 @@ import java.awt.Shape;
 import java.util.LinkedList; 
 import java.util.Queue; 
 public class tree { 
-       
+       Node root;
     /* A binary tree node has key, pointer to  
     left child and a pointer to right child */
-    static class Node { 
-        int key; 
-        int posX;
-        int posY;
-        double angle;
-        Shape ellipse;
-
-        public void setArc(Shape arc) {
-            this.ellipse = arc;
-        }
-        
-        Node left, right; 
-          
-        // constructor 
-        Node(int key){ 
-            this.key = key; 
-            left = null; 
-            right = null; 
-        } 
-        Node (int posX, int posY, double angle){
-            this.posX=posX;
-            this.posY=posY;
-            this.angle=angle;
-            left = null; 
-            right = null;
-        }
-        Node (int posX, int posY, double angle,Shape arc){
-            this.posX=posX;
-            this.posY=posY;
-            this.angle=angle;
-            this.ellipse=arc;
-            left = null; 
-            right = null;
-        }
-    } 
-    
-    static Node root; 
-    static Node temp = root; 
-    Node test;
+//    static class Node { 
+//        int key; 
+//        int posX;
+//        int posY;
+//        double angle;
+//        Shape ellipse;
+//
+//        public void setArc(Shape arc) {
+//            this.ellipse = arc;
+//        }
+//        
+//        Node left, right; 
+//          
+//        // constructor 
+//        Node(int key){ 
+//            this.key = key; 
+//            left = null; 
+//            right = null; 
+//        } 
+//        Node (int posX, int posY, double angle){
+//            this.posX=posX;
+//            this.posY=posY;
+//            this.angle=angle;
+//            left = null; 
+//            right = null;
+//        }
+//        Node (int posX, int posY, double angle,Shape arc){
+//            this.posX=posX;
+//            this.posY=posY;
+//            this.angle=angle;
+//            this.ellipse=arc;
+//            left = null; 
+//            right = null;
+//        }
+//    } 
+//    
+//    static Node root; 
+//    static Node temp = root; 
+//    Node test;
     tree(int x, int y, double angle){
-        test=new Node(x,y,angle);
+        root=new Node(x,y,angle);
     }
       
     /* Inorder traversal of a binary tree*/
-    static void inorder(Node temp) 
+    public void inorder(Node temp) 
     { 
         if (temp == null) 
             return; 

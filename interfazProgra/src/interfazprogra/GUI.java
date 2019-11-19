@@ -20,6 +20,7 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     public GUI() {
+        arbol = new tree(400,500,-90);
         initComponents();
         setSize(1700,975);
         amountLeavesGathered.setEditable(false);
@@ -52,7 +53,7 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new draw();
+        jPanel1 = new draw(arbol);
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -294,12 +295,15 @@ public class GUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run() { 
 
                 new GUI().setVisible(true);
+                
             }
         });
+
     }
+    public tree arbol;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Estado;
