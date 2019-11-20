@@ -49,7 +49,7 @@ public class Planning {
     for(int indexTrees=0;indexTrees<trees.size();indexTrees++){
         if (!treesUsed.contains(indexTrees)){
             double distance=Math.abs((trees.get(indexTrees).getPosX()-ITestConstants.TEST_POSICION_HORMIGUERO)+trees.get(indexTrees).getLength());
-            trees.get(indexTrees).setProbability(distance/summation);
+            trees.get(indexTrees).setProbability(1-(distance/summation));
         }          
     }      
   }
