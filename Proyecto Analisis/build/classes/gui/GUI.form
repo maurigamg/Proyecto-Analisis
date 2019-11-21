@@ -33,7 +33,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel4" max="32767" attributes="0"/>
-              <EmptySpace pref="142" max="32767" attributes="0"/>
+              <EmptySpace pref="147" max="32767" attributes="0"/>
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
@@ -57,7 +57,7 @@
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="154" max="32767" attributes="0"/>
+              <EmptySpace pref="159" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -324,7 +324,7 @@
             <CodeExpression id="2">
               <ExpressionOrigin>
                 <ExpressionProvider type="CodeConstructor">
-                  <CodeConstructor class="View.PageViewer" parameterTypes=""/>
+                  <CodeConstructor class="pageviewer.PageViewer" parameterTypes=""/>
                 </ExpressionProvider>
               </ExpressionOrigin>
             </CodeExpression>
