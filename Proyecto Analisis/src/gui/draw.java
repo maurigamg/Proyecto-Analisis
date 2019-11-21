@@ -16,6 +16,7 @@ import java.awt.Shape;
 import java.util.ArrayList;
 import common.ITestConstants;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JButton;
 /**
  *
@@ -31,6 +32,7 @@ public class draw extends JPanel{//=new tree(400,500,-90);
     public draw(ArrayList<TestTree> testTrees){
         this.testTrees = testTrees;
         hormigas = new ArrayList<>();
+        setPreferredSize(new Dimension(1200, 1500));
         hormiga = new Hormiga(ITestConstants.TEST_POSICION_HORMIGUERO, 0, Color.red,400);
         hormigas.add(hormiga);
         hormigas.add(new Hormiga(ITestConstants.TEST_POSICION_HORMIGUERO, 30, Color.red,400));
