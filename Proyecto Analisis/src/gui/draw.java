@@ -27,12 +27,12 @@ public class draw extends JPanel{//=new tree(400,500,-90);
     public ArrayList<Hormiga> hormigas;
     public Timer timer = null; 
     public  ArrayList<TestTree> testTrees;
-    private boolean traversed = false;
     private JButton start;
+    boolean test=false;
     public draw(ArrayList<TestTree> testTrees){
         this.testTrees = testTrees;
+        setPreferredSize(new Dimension(1200, 2000));
         hormigas = new ArrayList<>();
-        setPreferredSize(new Dimension(1200, 1500));
         hormiga = new Hormiga(ITestConstants.TEST_POSICION_HORMIGUERO, 0, Color.red,400);
         hormigas.add(hormiga);
         hormigas.add(new Hormiga(ITestConstants.TEST_POSICION_HORMIGUERO, 30, Color.red,400));
@@ -47,6 +47,7 @@ public class draw extends JPanel{//=new tree(400,500,-90);
             }
         });
         timer.start();
+        
 //         start = new JButton("Reinar");
 //        start.addActionListener(new ActionListener(){
 //            public void actionPerformed(ActionEvent e) {
@@ -75,10 +76,13 @@ public class draw extends JPanel{//=new tree(400,500,-90);
         g2d.setColor(Color.ORANGE);
         g2d.fillRect(0, 0, 1199, 700);
         g2d.setColor(Color.BLACK);
-        
+        if(!test){
             for (TestTree testTree : testTrees) {
-            drawTree(g, testTree.getPosX(), 700, -90, testTree.getLevels());
+                drawTree(g, testTree.getPosX(), 700, -90, testTree.getLevels());
             }
+            test=true;
+        }
+        
            
         
         for(Hormiga h : hormigas){

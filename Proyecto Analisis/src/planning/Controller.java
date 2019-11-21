@@ -31,7 +31,8 @@ public class Controller {
         public void actionPerformed(ActionEvent e) {
             //inicia la vara
             planningLogic.getTasks();
-            viewGui.createDrawPanel();
+            viewGui.createDrawing();
+            
         }
     
     }

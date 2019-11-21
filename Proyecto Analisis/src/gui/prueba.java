@@ -19,7 +19,7 @@ public class prueba {
         
         ArrayList<TestTree> trees = generator.getTests()[0];
         GUI view = new GUI(trees);
-        Planning planning = new Planning(trees, 1);
+        Planning planning = new Planning(trees);
         Controller controller = new Controller(view, planning);
         
     }

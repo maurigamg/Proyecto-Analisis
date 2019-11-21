@@ -4,6 +4,12 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
+import static common.ITestConstants.AMOUNT_OF_TESTS;
+import static common.ITestConstants.TEST_RULES;
+import gui.GUI;
+import planning.Controller;
+import planning.Planning;
+import planning.Task;
 
 public class TestGenerator implements ITestConstants {
 
@@ -44,10 +50,22 @@ public class TestGenerator implements ITestConstants {
 
   public static void main(String args[]) {
     TestGenerator generator = new TestGenerator();
-    ArrayList<TestTree>[] trees = generator.getTests();
-    float hola = 4;
-    hola*=0.9;
-    System.out.println("dsasdadwadsa " + hola);
+
+    //ArrayList<TestTree> x = new ArrayList<>();
+    //x.add(new TestTree(900, 50, 10));
+    //x.add(new TestTree(800, 50, 10));
+//    Planning greedyAlgorithm = new Planning(generator.getTests()[0]);
+//    
+//    //greedyAlgorithm.startGreedyAlgorithm();
+//    Controller controller = new Controller(view, greedyAlgorithm);
+//    System.out.println("hojas: "+greedyAlgorithm.getLeaves());
+//    System.out.println("\nTasks");
+//    for(Task y: greedyAlgorithm.getTasks()){
+//      System.out.println("\nidTree: "+y.getIdTree());
+//      System.out.println("Amounts: "+y.getAntsAmount());
+//      System.out.println("RoutTime: "+y.getRouteTime());
+//    }
+    GUI view = new GUI(generator.getTests()[0]);
     
   }
 }
