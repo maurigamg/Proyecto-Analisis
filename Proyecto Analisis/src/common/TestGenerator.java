@@ -43,7 +43,8 @@ public class TestGenerator implements ITestConstants {
   }
 
   public static void main(String args[]) {
-    //TestGenerator generator = new TestGenerator();
+    TestGenerator generator = new TestGenerator();
+    ArrayList<TestTree>[] trees = generator.getTests();
     float hola = 4;
     hola*=0.9;
     System.out.println("dsasdadwadsa " + hola);

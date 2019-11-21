@@ -1,24 +1,27 @@
 package gui;
 
+import common.TestGenerator;
+import common.TestTree;
+import java.util.ArrayList;
+import planning.Controller;
+import planning.Planning;
+
 /**
  *
  * @author David
  */
 public class prueba {
 
-    GUI view; 
-    public prueba() {
-        view= new GUI();
-        view.setVisible(true);
-    }
-    public void viewArbol(){
-        view.arbol.inorder(view.arbol.root);
-    }
     
     public static void main(String[] args) {
-        prueba p = new prueba();
-        p.viewArbol();
-        System.out.println("interfazprogra.prueba.main()");
+        TestGenerator generator = new TestGenerator();
+        
+        
+        ArrayList<TestTree> trees = generator.getTests()[0];
+        GUI view = new GUI(trees);
+        Planning planning = new Planning(trees, 1);
+        Controller controller = new Controller(view, planning);
+        
     }
     
     

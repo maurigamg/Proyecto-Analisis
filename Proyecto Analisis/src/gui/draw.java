@@ -1,23 +1,57 @@
 package gui;
 
+import common.TestTree;
 import java.awt.AlphaComposite;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import javax.swing.JPanel;
-
+import javax.swing.Timer;
+import java.awt.Shape;
+import java.util.ArrayList;
+import common.ITestConstants;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
 /**
  *
  * @author erick
  */
-public class draw extends JPanel{
-    public tree treeToTest;//=new tree(400,500,-90);
-    public draw(tree arbol){
-        treeToTest = arbol;
+public class draw extends JPanel{//=new tree(400,500,-90);
+    public Hormiga hormiga;
+    public ArrayList<Hormiga> hormigas;
+    public Timer timer = null; 
+    public  ArrayList<TestTree> testTrees;
+    private boolean traversed = false;
+    private JButton start;
+    public draw(ArrayList<TestTree> testTrees){
+        this.testTrees = testTrees;
+        hormigas = new ArrayList<>();
+        hormiga = new Hormiga(ITestConstants.TEST_POSICION_HORMIGUERO, 0, Color.red,400);
+        hormigas.add(hormiga);
+        hormigas.add(new Hormiga(ITestConstants.TEST_POSICION_HORMIGUERO, 30, Color.red,400));
+        timer =  new Timer(5, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                for(Hormiga h : hormigas){
+                    h.move();
+                    h.decreaseDelay();
+                    repaint();
+                }
+    
+            }
+        });
+        timer.start();
+//         start = new JButton("Reinar");
+//        start.addActionListener(new ActionListener(){
+//            public void actionPerformed(ActionEvent e) {
+//                timer.start();
+//            }
+//        });
+       
     }
 
     @Override
@@ -35,22 +69,32 @@ public class draw extends JPanel{
         g2d.fillRect(0, 700, 1199, 250);
         Color brown=new Color(102, 51, 0);
         g2d.setColor(brown);
-        g2d.fillRect(800, 700, 10, 10);
+        g2d.fillRect(ITestConstants.TEST_POSICION_HORMIGUERO, 700, 10, 10);
         g2d.setColor(Color.ORANGE);
         g2d.fillRect(0, 0, 1199, 700);
         g2d.setColor(Color.BLACK);
-        drawTree(g2d, 400, 750, -90, 8,treeToTest.root);
-    
+        
+            for (TestTree testTree : testTrees) {
+            drawTree(g, testTree.getPosX(), 700, -90, testTree.getLevels());
+            }
+           
+        
+        for(Hormiga h : hormigas){
+            h.drawShape(g);
+        }
+        
   
     
     }
-    
+    public void startTimer(){
+        timer.start();
+    }
 //    private void drawAux(Graphics g, int x1, int y1, double angle, int depth, Node rootNode){
 //        drawTree(g, x1, y1, angle, depth,rootNode);
 //        return;
 //    }
     
-    private void drawTree(Graphics g, int x1, int y1, double angle, int depth, Node rootNode) {
+    private void drawTree(Graphics g, int x1, int y1, double angle, int depth) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.BLACK);
         
@@ -58,7 +102,7 @@ public class draw extends JPanel{
             g2d.setColor(new Color(0,153,0));            
             Shape ellipse=new Ellipse2D.Double(x1,y1,5,5);
             g2d.fill(ellipse);
-             rootNode.ellipse = ellipse;
+             
             //tree.insert(treeToTest.test,x1,y1,angle,ellipse);
             
             return;        
@@ -70,10 +114,10 @@ public class draw extends JPanel{
         
         g2d.drawLine(x1, y1, x2, y2);
         //tree.insert(treeToTest.test,x1,y1,angle,null);
-        rootNode.left = new Node(x2, y2, angle-20);
-        drawTree(g, x2, y2, angle - 20, depth - 1,rootNode.left);
-        rootNode.right = new Node(x2, y2, angle+20);
-        drawTree(g, x2, y2, angle + 20, depth - 1,rootNode.right);
+        
+        drawTree(g, x2, y2, angle - 20, depth - 1);
+        
+        drawTree(g, x2, y2, angle + 20, depth - 1);
     }
     
     
