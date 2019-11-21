@@ -6,6 +6,8 @@ public class TestTree {
   int length;
   int levels;
   double leafLength;
+  double probability;
+
 
   public TestTree(int pPosX, int pLength, int pLevels) {
     this.posX = pPosX;
@@ -14,7 +16,15 @@ public class TestTree {
 
     for (leafLength = pLength; --pLevels > 0; leafLength *= ITestConstants.GROW_PERCENTAGE);
   }
+  
 
+  public double getProbability() {
+    return probability;
+  }
+
+  public void setProbability(double probability) {
+    this.probability = probability;
+  }
   public int getPosX() {
     return posX;
   }
