@@ -7,5 +7,5 @@ package planning;
 public interface IPlanningConstants {
   public final int ANTS = 200;
   public final int SPEED = 2;
-  public final int TIME = 40000;
+  public final int TIME = 80000;
 }

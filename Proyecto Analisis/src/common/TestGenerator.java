@@ -4,6 +4,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
+import planning.Planning;
+import planning.Task;
 
 public class TestGenerator implements ITestConstants {
 
@@ -43,10 +45,20 @@ public class TestGenerator implements ITestConstants {
   }
 
   public static void main(String args[]) {
-    //TestGenerator generator = new TestGenerator();
-    float hola = 4;
-    hola*=0.9;
-    System.out.println("dsasdadwadsa " + hola);
+    TestGenerator generator = new TestGenerator();
+
+    //ArrayList<TestTree> x = new ArrayList<>();
+    //x.add(new TestTree(900, 50, 10));
+    //x.add(new TestTree(800, 50, 10));
+    Planning greedyAlgorithm = new Planning(generator.getTests()[2]);
+    greedyAlgorithm.startGreedyAlgorithm();
+    System.out.println("hojas: "+greedyAlgorithm.getLeaves());
+    System.out.println("\nTasks");
+    for(Task y: greedyAlgorithm.getTasks()){
+      System.out.println("\nidTree: "+y.getIdTree());
+      System.out.println("Amounts: "+y.getAntsAmount());
+      System.out.println("RoutTime: "+y.getRouteTime());
+    }
     
   }
 }
